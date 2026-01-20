@@ -11,65 +11,65 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.DeviceIds;
 
-public class Intake extends SubsystemBase {
+public class Agitator extends SubsystemBase {
 
-	private TalonFX IntakeKraken = new TalonFX(DeviceIds.Intake.LeadMotorId);
-    private TalonFXConfiguration IntakeFXConfig = new TalonFXConfiguration();
-    private TalonFX IntakeKrakenFollower = new TalonFX(DeviceIds.Intake.FollowerMotorId);
+	private TalonFX AgitatorKraken = new TalonFX(DeviceIds.Agitator.LeadMotorId);
+    private TalonFXConfiguration AgitatorFXConfig = new TalonFXConfiguration();
+    private TalonFX AgitatorKrakenFollower = new TalonFX(DeviceIds.Agitator.FollowerMotorId);
 
 
-	public Intake() {
+	public Agitator() {
         /** Shooter Motor Configuration */
         /* Motor Inverts and Neutral Mode */
-		IntakeFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
-        IntakeFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+		AgitatorFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        AgitatorFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
         // Set Followers
-		IntakeKrakenFollower.setControl(new Follower(IntakeKraken.getDeviceID(), null));
+		AgitatorKrakenFollower.setControl(new Follower(AgitatorKraken.getDeviceID(), null));
 
         /* Current Limiting */
-        //IntakeFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        //IntakeFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
-        //IntakeFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
-        //IntakeFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
+        //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
+        //AgitatorFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
+        //AgitatorFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
 
-        IntakeFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
-        IntakeFXConfig.CurrentLimits.StatorCurrentLimit = 25;
+        AgitatorFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
+        AgitatorFXConfig.CurrentLimits.StatorCurrentLimit = 25;
 
         /* PID Config */
-        IntakeFXConfig.Slot0.kP = 0.2;
-        IntakeFXConfig.Slot0.kI = 0;
-        IntakeFXConfig.Slot0.kD = 0;
+        AgitatorFXConfig.Slot0.kP = 0.2;
+        AgitatorFXConfig.Slot0.kI = 0;
+        AgitatorFXConfig.Slot0.kD = 0;
 
         /* Open and Closed Loop Ramping */
-        IntakeFXConfig.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = 0.1;
-        IntakeFXConfig.OpenLoopRamps.VoltageOpenLoopRampPeriod = 0.1;
+        AgitatorFXConfig.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = 0.1;
+        AgitatorFXConfig.OpenLoopRamps.VoltageOpenLoopRampPeriod = 0.1;
 
-        IntakeFXConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.1;
-        IntakeFXConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = 0.1;
+        AgitatorFXConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.1;
+        AgitatorFXConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = 0.1;
 
         // Config Motor
-        IntakeKraken.getConfigurator().apply(IntakeFXConfig);
-        IntakeKraken.getConfigurator().setPosition(0.0);
-        IntakeKrakenFollower.getConfigurator().setPosition(0.0);
+        AgitatorKraken.getConfigurator().apply(AgitatorFXConfig);
+        AgitatorKraken.getConfigurator().setPosition(0.0);
+        AgitatorKrakenFollower.getConfigurator().setPosition(0.0);
 	}
 
 	public void setSpeed(double speed) {
-        this.IntakeKraken.set(speed);
+        this.AgitatorKraken.set(speed);
 	}
 
 	public double getCurrentDrawLeader() {
-		return this.IntakeKraken.getSupplyCurrent().getValueAsDouble();
+		return this.AgitatorKraken.getSupplyCurrent().getValueAsDouble();
 	}
 
     public double getCurrentDrawFollower() {
-		return this.IntakeKrakenFollower.getSupplyCurrent().getValueAsDouble();
+		return this.AgitatorKrakenFollower.getSupplyCurrent().getValueAsDouble();
 	}
 
 	public void resetShooterEncoder() {
         try {
-			IntakeKraken.getConfigurator().setPosition(0.0);
-            IntakeKrakenFollower.getConfigurator().setPosition(0.0);
+			AgitatorKraken.getConfigurator().setPosition(0.0);
+            AgitatorKrakenFollower.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
             DriverStation.reportError("Shooter.resetShooterEncoders exception.  You're Screwed! : " + e.toString(), false);
@@ -77,8 +77,8 @@ public class Intake extends SubsystemBase {
 	}
 
 	public void updateDashboard() {
-		SmartDashboard.putNumber("Intake Current", this.getCurrentDrawLeader());
-        SmartDashboard.putNumber("Intake Follower Current", this.getCurrentDrawFollower());
+		SmartDashboard.putNumber("Agitator Current", this.getCurrentDrawLeader());
+        SmartDashboard.putNumber("Agitator Follower Current", this.getCurrentDrawFollower());
 
 	}
 }

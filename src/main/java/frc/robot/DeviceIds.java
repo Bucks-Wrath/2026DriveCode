@@ -4,14 +4,10 @@ package frc.robot;
 
 public final class DeviceIds {
     public static final class Serializer {
-        // public static final int MotorId = 20;
+        public static final int MotorId = 20;
         // public static final int BeamBreakChannel = 0;
         // public static final int BeamBreakChannel2 = 1;
 
-    }
-
-    public static final class Feeder {
-        public static final int MotorId = 4;
     }
      public static final class Upkicker {
         public static final int MotorId = 0;

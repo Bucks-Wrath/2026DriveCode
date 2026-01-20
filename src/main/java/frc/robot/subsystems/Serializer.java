@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.DeviceIds;
 
-public class Feeder extends SubsystemBase {
+public class Serializer extends SubsystemBase {
 
 	public TalonFX FeederKraken = new TalonFX(DeviceIds.Feeder.MotorId);
     public TalonFXConfiguration FeederFXConfig = new TalonFXConfiguration();
 
 
-	public Feeder() {
+	public Serializer() {
         /** Shooter Motor Configuration */
         /* Motor Inverts and Neutral Mode */
 		FeederFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;

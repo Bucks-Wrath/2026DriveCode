@@ -4,6 +4,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.MotorAlignmentValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -25,7 +26,7 @@ public class Intake extends SubsystemBase {
         IntakeFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
         // Set Followers
-		IntakeKrakenFollower.setControl(new Follower(IntakeKraken.getDeviceID(), null));
+		IntakeKrakenFollower.setControl(new Follower(IntakeKraken.getDeviceID(), MotorAlignmentValue.Opposed));
 
         /* Current Limiting */
         //IntakeFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;

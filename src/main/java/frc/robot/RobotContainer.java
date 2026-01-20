@@ -21,12 +21,12 @@ import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
-import frc.robot.commands.Shooter.RunFeeder;
-import frc.robot.commands.Shooter.StopFeeder;
+import frc.robot.commands.Shooter.RunSerializer;
+import frc.robot.commands.Shooter.StopSerializer;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.Serializer;
 import frc.robot.subsystems.Intake;
 
 public class RobotContainer {
@@ -61,15 +61,15 @@ public class RobotContainer {
 
     //subsystems
     public static Shooter shooter = new Shooter();
-    public static Feeder feeder = new Feeder();
+    public static Serializer serializer = new Serializer();
     public static Intake intake = new Intake();
 
     public RobotContainer() {
         configureBindings();
 
-        // Sets Default Commands for intake and feeder motors
+        // Sets Default Commands for intake and Serializer motors
         intake.setDefaultCommand(new StopIntake());
-        feeder.setDefaultCommand(new StopFeeder());
+        Serializer.setDefaultCommand(new StopSerializer());
     }
 
     private void configureBindings() {
@@ -92,8 +92,8 @@ public class RobotContainer {
         );
 
         // driver button configurations
-        shootButton.whileTrue(new RunFeeder());  
-        shootButton.whileFalse(new StopFeeder());
+        shootButton.whileTrue(new RunSerializer());  
+        shootButton.whileFalse(new StopSerializer());
         intakeButton.whileTrue(new RunIntake());
         intakeButton.whileFalse(new StopIntake());
 

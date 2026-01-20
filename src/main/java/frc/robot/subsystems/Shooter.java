@@ -4,6 +4,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.MotorAlignmentValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -27,7 +28,7 @@ public class Shooter extends SubsystemBase {
         ShooterFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
         // Set Followers
-		ShooterKrakenFollower.setControl(new Follower(ShooterKraken.getDeviceID(), null));
+		ShooterKrakenFollower.setControl(new Follower(ShooterKraken.getDeviceID(), MotorAlignmentValue.Opposed));
 
 
         /* Current Limiting */

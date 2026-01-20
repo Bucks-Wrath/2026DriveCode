@@ -16,6 +16,18 @@ public final class DeviceIds {
         public static final int LeadMotorId = 1;
         public static final int FollowerMotorId = 2;
     }
+        public static final class Turret {
+        public static final int LeadMotorId = 1;
+        public static final int FollowerMotorId = 2;
+        public void setSpeed(int i) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setSpeed'");
+        }
+        public void setSpeed(double d) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setSpeed'");
+        }
+    }
 
     public static final class Shooter {
         public static final int LeadMotorId = 19;

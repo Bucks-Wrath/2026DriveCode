@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
+import frc.robot.commands.IntakePivot.ToggleIntakePivotPosition;
 import frc.robot.commands.Shooter.RunFeeder;
 import frc.robot.commands.Shooter.StopFeeder;
 import frc.robot.generated.TunerConstants;
@@ -28,6 +29,7 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakePivot;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -63,6 +65,7 @@ public class RobotContainer {
     public static Shooter shooter = new Shooter();
     public static Feeder feeder = new Feeder();
     public static Intake intake = new Intake();
+    public static IntakePivot intakePivot = new IntakePivot();
 
     public RobotContainer() {
         configureBindings();
@@ -116,10 +119,14 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
 
         // operator button configurations
+        // operator buttons to increment shooter speed up and down
         ShooterSpeedAdjustUpButton.onTrue(new InstantCommand( () -> shooter.changeShooterSpeed(0.1) ));
         ShooterSpeedAdjustDownButton.onTrue(new InstantCommand(() -> shooter.changeShooterSpeed(-0.1) ));
 
+        // operator button to toggle the intake up and down
+        OperatorController.a().onTrue(new ToggleIntakePivotPosition());
     }
+
 
     public Command getAutonomousCommand() {
         // Simple drive forward auton

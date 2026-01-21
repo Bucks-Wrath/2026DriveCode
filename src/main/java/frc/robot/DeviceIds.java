@@ -10,6 +10,10 @@ public final class DeviceIds {
 
     }
 
+    public static final class IntakePivot {
+        public static final int MotorId = 5;
+    }
+
     public static final class Feeder {
         public static final int MotorId = 4;
     }

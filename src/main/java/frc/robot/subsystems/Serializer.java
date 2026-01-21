@@ -12,52 +12,52 @@ import frc.robot.DeviceIds;
 
 public class Serializer extends SubsystemBase {
 
-	public TalonFX FeederKraken = new TalonFX(DeviceIds.Feeder.MotorId);
-    public TalonFXConfiguration FeederFXConfig = new TalonFXConfiguration();
+	public TalonFX SerializerKraken = new TalonFX(DeviceIds.Serializer.MotorId);
+    public TalonFXConfiguration SerializerFXConfig = new TalonFXConfiguration();
 
 
 	public Serializer() {
         /** Shooter Motor Configuration */
         /* Motor Inverts and Neutral Mode */
-		FeederFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
-        FeederFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+		SerializerFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        SerializerFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
 
         /* Current Limiting */
-        //FeederFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        //FeederFXConfig.CurrentLimits.SupplyCurrentLimit = 10;
-        //FeederFXConfig.CurrentLimits.SupplyCurrentThreshold = 20;
-        //FeederFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
-        FeederFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
-        FeederFXConfig.CurrentLimits.StatorCurrentLimit = 30;
+        //SerializerFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        //SerializerFXConfig.CurrentLimits.SupplyCurrentLimit = 10;
+        //SerializerFXConfig.CurrentLimits.SupplyCurrentThreshold = 20;
+        //SerializerFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
+        SerializerFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
+        SerializerFXConfig.CurrentLimits.StatorCurrentLimit = 30;
 
         /* PID Config */
-        FeederFXConfig.Slot0.kP = 0.2;
-        FeederFXConfig.Slot0.kI = 0;
-        FeederFXConfig.Slot0.kD = 0;
+        SerializerFXConfig.Slot0.kP = 0.2;
+        SerializerFXConfig.Slot0.kI = 0;
+        SerializerFXConfig.Slot0.kD = 0;
 
         /* Open and Closed Loop Ramping */
-        FeederFXConfig.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = 0.05;
-        FeederFXConfig.OpenLoopRamps.VoltageOpenLoopRampPeriod = 0.05;
+         SerializerFXConfig.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = 0.05;
+         SerializerFXConfig.OpenLoopRamps.VoltageOpenLoopRampPeriod = 0.05;
 
-        FeederFXConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.05;
-        FeederFXConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = 0.05;
+        SerializerFXConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.05;
+        SerializerFXConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = 0.05;
 
         // Config Motor
-        FeederKraken.getConfigurator().apply(FeederFXConfig);
-        FeederKraken.getConfigurator().setPosition(0.0);
+       SerializerKraken.getConfigurator().apply(SerializerFXConfig);
+        SerializerKraken.getConfigurator().setPosition(0.0);
 	}
 
 	public void setSpeed(double speed) {
-        this.FeederKraken.set(speed);
+        this.SerializerKraken.set(speed);
 	}
 
 	public double getCurrentDraw() {
-		return this.FeederKraken.getSupplyCurrent().getValueAsDouble();
+		return this.SerializerKraken.getSupplyCurrent().getValueAsDouble();
 	}
 
 	public void resetShooterEncoder() {
         try {
-			FeederKraken.getConfigurator().setPosition(0.0);
+			SerializerKraken.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
             DriverStation.reportError("Shooter.resetShooterEncoders exception.  You're Screwed! : " + e.toString(), false);
@@ -65,6 +65,6 @@ public class Serializer extends SubsystemBase {
 	}
 
 	public void updateDashboard() {
-		SmartDashboard.putNumber("Feeder Current", this.getCurrentDraw());
+		SmartDashboard.putNumber("Serializer Current", this.getCurrentDraw());
 	}
 }

@@ -67,7 +67,7 @@ public class RobotContainer {
     public RobotContainer() {
         configureBindings();
 
-        // Sets Default Commands for intake and serializer motors
+        // Sets Default Commands for intake and Serializer motors
         intake.setDefaultCommand(new StopIntake());
         serializer.setDefaultCommand(new StopSerializer());
     }

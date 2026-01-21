@@ -31,13 +31,13 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
 
 	private final static double onTargetThreshold = 0.1;
 		
-	private TalonFX IntakePivotFalcon = new TalonFX(DeviceIds.IntakePivot.MotorId, "canivore");
+	private TalonFX IntakePivotKraken = new TalonFX(DeviceIds.IntakePivot.MotorId);
 
     private TalonFXConfiguration IntakePivotFXConfig = new TalonFXConfiguration();
 
 	public IntakePivot() {
 		// Clear Sticky Faults
-		this.IntakePivotFalcon.clearStickyFaults();
+		this.IntakePivotKraken.clearStickyFaults();
 		
         /** IntakePivot Motor Configuration */
         /* Motor Inverts and Neutral Mode */
@@ -65,23 +65,23 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
         IntakePivotFXConfig.MotionMagic.withMotionMagicCruiseVelocity(500);
 
         // Config Motor
-        IntakePivotFalcon.getConfigurator().apply(IntakePivotFXConfig);
-        IntakePivotFalcon.getConfigurator().setPosition(0.0);
+        IntakePivotKraken.getConfigurator().apply(IntakePivotFXConfig);
+        IntakePivotKraken.getConfigurator().setPosition(0.0);
     }
 
 	public void motionMagicControl() {
 		this.manageMotion(targetPosition);
         targetPositionDutyCycle.withPosition(targetPosition);
         targetPositionDutyCycle.withFeedForward(feedForward);
-		this.IntakePivotFalcon.setControl(targetPositionDutyCycle);
+		this.IntakePivotKraken.setControl(targetPositionDutyCycle);
 	}
 
 	public double getCurrentPosition() {
-		return this.IntakePivotFalcon.getRotorPosition().getValueAsDouble();
+		return this.IntakePivotKraken.getRotorPosition().getValueAsDouble();
 	}
 
 	public double getCurrentDraw() {
-		return this.IntakePivotFalcon.getSupplyCurrent().getValueAsDouble();
+		return this.IntakePivotKraken.getSupplyCurrent().getValueAsDouble();
 	}
 
 	public boolean isHoldingPosition() {
@@ -137,7 +137,7 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
 
 	public void resetIntakePivotEncoder() {
         try {
-			IntakePivotFalcon.getConfigurator().setPosition(0.0);
+			IntakePivotKraken.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
             DriverStation.reportError("IntakePivot.resetIntakePivotEncoders exception.  You're Screwed! : " + e.toString(), false);
@@ -181,7 +181,7 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
 
 	@Override
 	public double getCurrentVelocity() {
-		double currentVelocity = this.IntakePivotFalcon.getVelocity().getValueAsDouble();
+		double currentVelocity = this.IntakePivotKraken.getVelocity().getValueAsDouble();
 		return currentVelocity;
 	}
 

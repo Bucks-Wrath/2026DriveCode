@@ -17,7 +17,7 @@ public class Serializer extends SubsystemBase {
 
 
 	public Serializer() {
-        /** Shooter Motor Configuration */
+        /** Serializer Motor Configuration */
         /* Motor Inverts and Neutral Mode */
 		SerializerFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         SerializerFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
@@ -55,12 +55,12 @@ public class Serializer extends SubsystemBase {
 		return this.SerializerKraken.getSupplyCurrent().getValueAsDouble();
 	}
 
-	public void resetShooterEncoder() {
+	public void resetSerializerEncoder() {
         try {
 			SerializerKraken.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
-            DriverStation.reportError("Shooter.resetShooterEncoders exception.  You're Screwed! : " + e.toString(), false);
+            DriverStation.reportError("Serializer.resetSerializerEncoders exception.  You're Screwed! : " + e.toString(), false);
         }
 	}
 

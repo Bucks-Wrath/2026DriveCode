@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.MotorAlignmentValue;
@@ -16,7 +15,6 @@ public class Intake extends SubsystemBase {
 
 	private TalonFX IntakeKraken = new TalonFX(DeviceIds.Intake.MotorId);
     private TalonFXConfiguration IntakeFXConfig = new TalonFXConfiguration();
-
 
 	public Intake() {
         /** Shooter Motor Configuration */
@@ -69,6 +67,5 @@ public class Intake extends SubsystemBase {
 
 	public void updateDashboard() {
 		SmartDashboard.putNumber("Intake Current", this.getCurrentDrawLeader());
-
 	}
 }

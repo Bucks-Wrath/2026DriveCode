@@ -7,7 +7,10 @@ public final class DeviceIds {
         public static final int MotorId = 20;
         // public static final int BeamBreakChannel = 0;
         // public static final int BeamBreakChannel2 = 1;
+    }
 
+    public static final class IntakePivot {
+        public static final int MotorId = 5;
     }
 
      public static final class Upkicker {
@@ -31,6 +34,10 @@ public final class DeviceIds {
     public static final class IntakePivot {
         public static final int MotorId = 1;
     }
+        public static final class Turret {
+        public static final int LeadMotorId = 1;
+        public static final int FollowerMotorId = 2;
+    }
 
     public static final class Shooter {
         public static final int LeadMotorId = 19;
@@ -42,9 +49,7 @@ public final class DeviceIds {
     }
 
     public static final class Limelight {
-        // public static final String FrontTableName = "limelight-shooter";
-        // public static final String RearTableName = "limelight-intake";
+        public static final String FrontTableName = "limelight-shooter";
+        public static final String RearTableName = "limelight-intake";
     }
-
-    public static final Class Upkicker = null;
 }

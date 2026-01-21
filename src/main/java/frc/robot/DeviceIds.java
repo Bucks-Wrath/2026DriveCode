@@ -10,18 +10,34 @@ public final class DeviceIds {
 
     }
 
-    public static final class Feeder {
-        public static final int MotorId = 4;
+    public static final class Intake {
+        public static final int LeadMotorId = 1;//TODO
+    }
+    
+    public static final class Agitator {
+        public static final int LeadMotorId = 2; //TODO
     }
 
-    public static final class Intake {
-        public static final int LeadMotorId = 1;
-        public static final int FollowerMotorId = 2;
+    public static final class IntakePivot {
+        public static final int LeadMotorId = 3; //TODO
+    }
+
+    public static final class Hood {
+        public static final int LeadMotorId = 6; //TODO
+    }
+
+    public static final class Upkicker {
+        public static final int LeadMotorId = 4;
+        public static final int FollowerMotorId = 5; //TODO
+    }
+
+    public static final class Turret {
+        public static final int LeadMotorId = 7; //TODO
     }
 
     public static final class Shooter {
         public static final int LeadMotorId = 19;
-        public static final int FollowerMotorId = 18;
+        public static final int FollowerMotorId = 18; //TODO
     }
 
     public static final class CANdle {

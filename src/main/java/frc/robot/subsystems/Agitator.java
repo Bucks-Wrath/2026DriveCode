@@ -15,7 +15,6 @@ public class Agitator extends SubsystemBase {
 
 	private TalonFX AgitatorKraken = new TalonFX(DeviceIds.Agitator.LeadMotorId);
     private TalonFXConfiguration AgitatorFXConfig = new TalonFXConfiguration();
-    private TalonFX AgitatorKrakenFollower = new TalonFX(DeviceIds.Agitator.FollowerMotorId);
 
 
 	public Agitator() {
@@ -24,9 +23,7 @@ public class Agitator extends SubsystemBase {
 		AgitatorFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         AgitatorFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
-        // Set Followers
-		AgitatorKrakenFollower.setControl(new Follower(AgitatorKraken.getDeviceID(), null));
-
+     
         /* Current Limiting */
         //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
         //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
@@ -51,7 +48,6 @@ public class Agitator extends SubsystemBase {
         // Config Motor
         AgitatorKraken.getConfigurator().apply(AgitatorFXConfig);
         AgitatorKraken.getConfigurator().setPosition(0.0);
-        AgitatorKrakenFollower.getConfigurator().setPosition(0.0);
 	}
 
 	public void setSpeed(double speed) {
@@ -62,14 +58,9 @@ public class Agitator extends SubsystemBase {
 		return this.AgitatorKraken.getSupplyCurrent().getValueAsDouble();
 	}
 
-    public double getCurrentDrawFollower() {
-		return this.AgitatorKrakenFollower.getSupplyCurrent().getValueAsDouble();
-	}
-
 	public void resetShooterEncoder() {
         try {
 			AgitatorKraken.getConfigurator().setPosition(0.0);
-            AgitatorKrakenFollower.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
             DriverStation.reportError("Shooter.resetShooterEncoders exception.  You're Screwed! : " + e.toString(), false);
@@ -78,7 +69,6 @@ public class Agitator extends SubsystemBase {
 
 	public void updateDashboard() {
 		SmartDashboard.putNumber("Agitator Current", this.getCurrentDrawLeader());
-        SmartDashboard.putNumber("Agitator Follower Current", this.getCurrentDrawFollower());
 
 	}
 }

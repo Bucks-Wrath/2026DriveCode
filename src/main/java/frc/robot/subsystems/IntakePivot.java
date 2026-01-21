@@ -31,7 +31,7 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
 
 	private final static double onTargetThreshold = 0.1;
 		
-	private TalonFX IntakePivotFalcon = new TalonFX(DeviceIds.IntakePivot.MotorId, "canivore");
+	private TalonFX IntakePivotFalcon = new TalonFX(DeviceIds.IntakePivot.LeadMotorId, "canivore");
 
     private TalonFXConfiguration IntakePivotFXConfig = new TalonFXConfiguration();
 

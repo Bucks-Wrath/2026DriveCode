@@ -4,7 +4,7 @@ package frc.robot;
 
 public final class DeviceIds {
     public static final class Serializer {
-        // public static final int MotorId = 20;
+        public static final int MotorId = 20;
         // public static final int BeamBreakChannel = 0;
         // public static final int BeamBreakChannel2 = 1;
 
@@ -33,7 +33,9 @@ public final class DeviceIds {
     }
 
     public static final class Limelight {
-        // public static final String FrontTableName = "limelight-shooter";
-        // public static final String RearTableName = "limelight-intake";
+        public static final String FrontTableName = "limelight-shooter";
+        public static final String RearTableName = "limelight-intake";
     }
+
+    public static final String Upkicker = null;
 }

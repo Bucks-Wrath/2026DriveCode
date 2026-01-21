@@ -31,5 +31,5 @@ public final class DeviceIds {
         // public static final String RearTableName = "limelight-intake";
     }
 
-    public static final String Upkicker = null;
+    public static final Class Upkicker = null;
 }

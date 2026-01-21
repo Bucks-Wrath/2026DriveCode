@@ -12,22 +12,23 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Commands;
-import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj.command.button.JoystickButton;
-import edu.wpi.first.wpilibj.command.button.RobotModeTriggers;
-import edu.wpi.first.wpilibj.command.sysid.SysIdRoutine.Direction;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
+import frc.robot.DeviceIds.Upkicker;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Shooter.RunSerializer;
 import frc.robot.commands.Shooter.StopSerializer;
+import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Serializer;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Serializer;
+import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -62,6 +63,7 @@ public class RobotContainer {
     //subsystems
     public static Shooter shooter = new Shooter();
     public static Serializer serializer = new Serializer();
+    public static Upkicker upkicker = new Upkicker();
     public static Intake intake = new Intake();
 
     public RobotContainer() {
@@ -70,6 +72,7 @@ public class RobotContainer {
         // Sets Default Commands for intake and Serializer motors
         intake.setDefaultCommand(new StopIntake());
         serializer.setDefaultCommand(new StopSerializer());
+        upkicker.setDefaultCommand(new StopUpkicker());
     }
 
     private void configureBindings() {
@@ -94,6 +97,9 @@ public class RobotContainer {
         // driver button configurations
         shootButton.whileTrue(new RunSerializer());  
         shootButton.whileFalse(new StopSerializer());
+        shootButton.whileTrue(new RunUpkicker());  
+        shootButton.whileFalse(new StopUpkicker());
+
         intakeButton.whileTrue(new RunIntake());
         intakeButton.whileFalse(new StopIntake());
 

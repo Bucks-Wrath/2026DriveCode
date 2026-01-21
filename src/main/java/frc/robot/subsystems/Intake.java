@@ -14,7 +14,7 @@ import frc.robot.DeviceIds;
 
 public class Intake extends SubsystemBase {
 
-	private TalonFX IntakeKraken = new TalonFX(DeviceIds.Intake.LeadMotorId);
+	private TalonFX IntakeKraken = new TalonFX(DeviceIds.Intake.MotorId);
     private TalonFXConfiguration IntakeFXConfig = new TalonFXConfiguration();
 
 

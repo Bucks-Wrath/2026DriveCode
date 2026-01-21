@@ -22,11 +22,13 @@ import frc.robot.DeviceIds.Upkicker;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Shooter.RunSerializer;
+import frc.robot.commands.Shooter.RunUpkicker;
 import frc.robot.commands.Shooter.StopSerializer;
 import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Upkicker;
 import frc.robot.subsystems.Serializer;
 import frc.robot.subsystems.Shooter;
 

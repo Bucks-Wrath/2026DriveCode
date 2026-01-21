@@ -13,7 +13,7 @@ import frc.robot.DeviceIds;
 
 public class Agitator extends SubsystemBase {
 
-	private TalonFX AgitatorKraken = new TalonFX(DeviceIds.Agitator.LeadMotorId);
+	private TalonFX AgitatorKraken = new TalonFX(DeviceIds.Agitator.MotorId);
     private TalonFXConfiguration AgitatorFXConfig = new TalonFXConfiguration();
 
 
@@ -25,10 +25,10 @@ public class Agitator extends SubsystemBase {
 
      
         /* Current Limiting */
-        //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        //AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
-        //AgitatorFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
-        //AgitatorFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
+        AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
+        AgitatorFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
+        AgitatorFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
 
         AgitatorFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
         AgitatorFXConfig.CurrentLimits.StatorCurrentLimit = 25;

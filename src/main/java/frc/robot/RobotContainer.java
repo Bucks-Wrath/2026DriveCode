@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.DeviceIds.Turret;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
+import frc.robot.commands.IntakePivot.ToggleIntakePivotPosition;
 import frc.robot.commands.Shooter.RunSerializer;
 import frc.robot.commands.Shooter.StopSerializer;
 import frc.robot.generated.TunerConstants;
@@ -29,6 +30,7 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Serializer;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakePivot;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -65,12 +67,14 @@ public class RobotContainer {
     public static Serializer serializer = new Serializer();
     public static Intake intake = new Intake();
     public static Turret turret = new Turret();
+    public static IntakePivot intakePivot = new IntakePivot();
+
     public RobotContainer() {
         configureBindings();
 
         // Sets Default Commands for intake and Serializer motors
         intake.setDefaultCommand(new StopIntake());
-        Serializer.setDefaultCommand(new StopSerializer());
+        serializer.setDefaultCommand(new StopSerializer());
     }
 
     private void configureBindings() {
@@ -117,10 +121,14 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
 
         // operator button configurations
+        // operator buttons to increment shooter speed up and down
         ShooterSpeedAdjustUpButton.onTrue(new InstantCommand( () -> shooter.changeShooterSpeed(0.1) ));
         ShooterSpeedAdjustDownButton.onTrue(new InstantCommand(() -> shooter.changeShooterSpeed(-0.1) ));
 
+        // operator button to toggle the intake up and down
+        OperatorController.a().onTrue(new ToggleIntakePivotPosition());
     }
+
 
     public Command getAutonomousCommand() {
         // Simple drive forward auton

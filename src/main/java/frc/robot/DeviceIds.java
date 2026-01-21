@@ -7,7 +7,6 @@ public final class DeviceIds {
         public static final int MotorId = 20;
         // public static final int BeamBreakChannel = 0;
         // public static final int BeamBreakChannel2 = 1;
-
     }
 
     public static final class IntakePivot {

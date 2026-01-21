@@ -27,8 +27,8 @@ public final class DeviceIds {
     }
 
     public static final class Limelight {
-        // public static final String FrontTableName = "limelight-shooter";
-        // public static final String RearTableName = "limelight-intake";
+        public static final String FrontTableName = "limelight-shooter";
+        public static final String RearTableName = "limelight-intake";
     }
 
     public static final String Upkicker = null;

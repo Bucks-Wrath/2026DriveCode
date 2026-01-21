@@ -69,7 +69,7 @@ public class RobotContainer {
 
         // Sets Default Commands for intake and feeder motors
         intake.setDefaultCommand(new StopIntake());
-        feeder.setDefaultCommand(new StopFeeder());
+        serializer.setDefaultCommand(new StopSerializer());
     }
 
     private void configureBindings() {

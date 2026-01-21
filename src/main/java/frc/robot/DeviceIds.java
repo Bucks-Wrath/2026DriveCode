@@ -31,9 +31,6 @@ public final class DeviceIds {
         public static final int MotorId = 1;
     }
 
-    public static final class IntakePivot {
-        public static final int MotorId = 1;
-    }
         public static final class Turret {
         public static final int LeadMotorId = 1;
         public static final int FollowerMotorId = 2;

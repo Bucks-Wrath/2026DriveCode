@@ -27,12 +27,15 @@ import frc.robot.commands.IntakePivot.ToggleIntakePivotPosition;
 import frc.robot.commands.Shooter.RunSerializer;
 import frc.robot.commands.Shooter.RunUpkicker;
 import frc.robot.commands.Shooter.StopSerializer;
+import frc.robot.commands.Agitator.RunAgitator;
+import frc.robot.commands.Agitator.StopAgitator;
 import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Upkicker;
 import frc.robot.subsystems.Serializer;
+import frc.robot.subsystems.Agitator;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.IntakePivot;
 
@@ -68,6 +71,7 @@ public class RobotContainer {
 
     //subsystems
     public static Shooter shooter = new Shooter();
+    public static Agitator agitator = new Agitator();
     public static Serializer serializer = new Serializer();
     public static Upkicker upkicker = new Upkicker();
     public static Intake intake = new Intake();

@@ -18,18 +18,22 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
+import frc.robot.DeviceIds.Upkicker;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.DeviceIds.Turret;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.IntakePivot.ToggleIntakePivotPosition;
 import frc.robot.commands.Shooter.RunSerializer;
+import frc.robot.commands.Shooter.RunUpkicker;
 import frc.robot.commands.Shooter.StopSerializer;
+import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Serializer;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Upkicker;
+import frc.robot.subsystems.Serializer;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.IntakePivot;
 
 public class RobotContainer {
@@ -65,6 +69,7 @@ public class RobotContainer {
     //subsystems
     public static Shooter shooter = new Shooter();
     public static Serializer serializer = new Serializer();
+    public static Upkicker upkicker = new Upkicker();
     public static Intake intake = new Intake();
     public static Turret turret = new Turret();
     public static IntakePivot intakePivot = new IntakePivot();
@@ -75,6 +80,7 @@ public class RobotContainer {
         // Sets Default Commands for intake and Serializer motors
         intake.setDefaultCommand(new StopIntake());
         serializer.setDefaultCommand(new StopSerializer());
+        upkicker.setDefaultCommand(new StopUpkicker());
     }
 
     private void configureBindings() {
@@ -99,6 +105,9 @@ public class RobotContainer {
         // driver button configurations
         shootButton.whileTrue(new RunSerializer());  
         shootButton.whileFalse(new StopSerializer());
+        shootButton.whileTrue(new RunUpkicker());  
+        shootButton.whileFalse(new StopUpkicker());
+
         intakeButton.whileTrue(new RunIntake());
         intakeButton.whileFalse(new StopIntake());
 

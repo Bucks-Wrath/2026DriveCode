@@ -13,13 +13,26 @@ public final class DeviceIds {
         public static final int MotorId = 5;
     }
 
-    public static final class Upkicker {
+     public static final class Upkicker {
+        public static final int LeadMotorId = 0;
+        public static final int FollowerMotorId = 0;
+
+    }
+
+         public static final class Agitator {
         public static final int MotorId = 0;
     }
-    
+
+         public static final class Hood {
+        public static final int MotorId = 9;
+    }
+
     public static final class Intake {
-        public static final int LeadMotorId = 1;
-        public static final int FollowerMotorId = 2;
+        public static final int MotorId = 1;
+    }
+
+    public static final class IntakePivot {
+        public static final int MotorId = 1;
     }
         public static final class Turret {
         public static final int LeadMotorId = 1;
@@ -28,7 +41,7 @@ public final class DeviceIds {
 
     public static final class Shooter {
         public static final int LeadMotorId = 19;
-        public static final int FollowerMotorId = 18;
+        public static final int FollowerMotorId = 18; //TODO
     }
 
     public static final class CANdle {

@@ -9,8 +9,18 @@ public final class DeviceIds {
         // public static final int BeamBreakChannel2 = 1;
 
     }
+
+
+    public static final class IntakePivot {
+        public static final int MotorId = 5;
+    }
+
+    public static final class Feeder {
+        public static final int MotorId = 4;
+
      public static final class Upkicker {
         public static final int MotorId = 0;
+
     }
     public static final class Intake {
         public static final int LeadMotorId = 1;

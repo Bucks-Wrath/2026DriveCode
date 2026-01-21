@@ -19,7 +19,7 @@ public class Turret extends SubsystemBase {
 
 
 	public Turret() {
-        /** Shooter Motor Configuration */
+        /** Turret Motor Configuration */
         /* Motor Inverts and Neutral Mode */
 		TurretFXConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         TurretFXConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
@@ -66,13 +66,13 @@ public class Turret extends SubsystemBase {
 		return this.TurretKrakenFollower.getSupplyCurrent().getValueAsDouble();
 	}
 
-	public void resetShooterEncoder() {
+	public void resetTurretEncoder() {
         try {
 			TurretKraken.getConfigurator().setPosition(0.0);
             TurretKrakenFollower.getConfigurator().setPosition(0.0);
         }
         catch (Exception e) {
-            DriverStation.reportError("Shooter.resetShooterEncoders exception.  You're Screwed! : " + e.toString(), false);
+            DriverStation.reportError("Turret.resetTurretEncoders exception.  You're Screwed! : " + e.toString(), false);
         }
 	}
 

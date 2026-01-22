@@ -9,22 +9,22 @@ public class SetIntakePivot extends Command {
 	public SetIntakePivot(double intakePivotPosition) {
 		this.intakePivotPosition = intakePivotPosition;
 
-		addRequirements(RobotContainer.IntakePivot);
+		addRequirements(RobotContainer.intakePivot);
 	}
 
 	// Called just before this Command runs the first time
 	public void initialize() {
-		RobotContainer.IntakePivot.setTargetPosition(intakePivotPosition);
+		RobotContainer.intakePivot.setTargetPosition(intakePivotPosition);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
-		RobotContainer.IntakePivot.motionMagicControl();
+		RobotContainer.intakePivot.motionMagicControl();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	public boolean isFinished() {
-			return RobotContainer.IntakePivot.isInPosition(intakePivotPosition);
+			return RobotContainer.intakePivot.isInPosition(intakePivotPosition);
 	}
 
 	// Called once after isFinished returns true

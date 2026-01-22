@@ -8,6 +8,7 @@ public class RunUpkicker extends Command {
     public RunUpkicker() {
         addRequirements(RobotContainer.upkicker);
     }
+	
 	// Called just before this Command runs the first time
 	public void initialize() {
 

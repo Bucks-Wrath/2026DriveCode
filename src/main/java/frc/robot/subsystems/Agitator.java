@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -25,10 +24,10 @@ public class Agitator extends SubsystemBase {
 
      
         /* Current Limiting */
-        AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
-        AgitatorFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
-        AgitatorFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
+        // AgitatorFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        // AgitatorFXConfig.CurrentLimits.SupplyCurrentLimit = 20;
+        // AgitatorFXConfig.CurrentLimits.SupplyCurrentThreshold = 30;
+        // AgitatorFXConfig.CurrentLimits.SupplyTimeThreshold = 0.01;
 
         AgitatorFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
         AgitatorFXConfig.CurrentLimits.StatorCurrentLimit = 25;

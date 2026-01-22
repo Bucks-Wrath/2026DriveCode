@@ -18,26 +18,16 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
-import frc.robot.DeviceIds.Upkicker;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
-import frc.robot.DeviceIds.Turret;
 import frc.robot.commands.Intake.RunIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.IntakePivot.ToggleIntakePivotPosition;
 import frc.robot.commands.Shooter.RunSerializer;
 import frc.robot.commands.Shooter.RunUpkicker;
 import frc.robot.commands.Shooter.StopSerializer;
-import frc.robot.commands.Agitator.RunAgitator;
-import frc.robot.commands.Agitator.StopAgitator;
 import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Upkicker;
-import frc.robot.subsystems.Serializer;
-import frc.robot.subsystems.Agitator;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.IntakePivot;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -63,11 +53,9 @@ public class RobotContainer {
     private final JoystickButton shootButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
     private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
 
-
     // operator buttons
     private final JoystickButton ShooterSpeedAdjustUpButton = new JoystickButton(operator, XboxController.Button.kStart.value);
     private final JoystickButton ShooterSpeedAdjustDownButton = new JoystickButton(operator, XboxController.Button.kBack.value);
-
 
     //subsystems
     public static Shooter shooter = new Shooter();
@@ -140,6 +128,20 @@ public class RobotContainer {
 
         // operator button to toggle the intake up and down
         OperatorController.a().onTrue(new ToggleIntakePivotPosition());
+    }
+
+    /* Sets Joystick Deadband */
+    public static double stickDeadband(double value, double deadband, double center) {
+        return (value < (center + deadband) && value > (center - deadband)) ? center : value;
+    }
+
+    /* Passes Along Joystick Values for Elevator and Wrist */
+    public double getOperatorLeftStickY() {
+       return stickDeadband(this.OperatorController.getRawAxis(1), 0.05, 0.0);
+    }
+
+    public double getOperatorRightStickY() {
+        return stickDeadband(this.OperatorController.getRawAxis(5), 0.05, 0.0);
     }
 
 

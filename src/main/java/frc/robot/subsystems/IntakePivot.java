@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import frc.lib.models.*;
 import frc.robot.DeviceIds;
 import frc.robot.Robot;
 
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class IntakePivot extends SubsystemBase implements IPositionControlledSubsystem {
+public class IntakePivot extends SubsystemBase {
 
 	private boolean isHoldingPosition = false;
 
@@ -179,13 +178,11 @@ public class IntakePivot extends SubsystemBase implements IPositionControlledSub
 		SmartDashboard.putNumber("IntakePivot Current", this.getCurrentDraw());
 	}
 
-	@Override
 	public double getCurrentVelocity() {
 		double currentVelocity = this.IntakePivotKraken.getVelocity().getValueAsDouble();
 		return currentVelocity;
 	}
 
-	@Override
 	public boolean isInPosition(double targetPosition) {
 		double currentPosition = this.getCurrentPosition();
 		double positionError = Math.abs(currentPosition - targetPosition);

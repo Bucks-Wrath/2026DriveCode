@@ -32,6 +32,7 @@ import frc.robot.commands.Agitator.StopAgitator;
 import frc.robot.commands.Shooter.StopUpkicker;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Hood;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Upkicker;
 import frc.robot.subsystems.Serializer;
@@ -75,6 +76,7 @@ public class RobotContainer {
     public static Serializer serializer = new Serializer();
     public static Upkicker upkicker = new Upkicker();
     public static Intake intake = new Intake();
+    public static Hood hood = new Hood();
     public static Turret turret = new Turret();
     public static IntakePivot intakePivot = new IntakePivot();
 

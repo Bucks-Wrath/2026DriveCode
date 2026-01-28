@@ -15,7 +15,7 @@ public final class DeviceIds {
 
      public static final class Upkicker {
         public static final int LeadMotorId = 0;
-        public static final int FollowerMotorId = 0;
+        public static final int FollowerMotorId = 6;
 
     }
 

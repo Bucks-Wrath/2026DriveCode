@@ -1,4 +1,4 @@
-package frc.robot.commands.Shooter;
+package frc.robot.commands.Upkicker;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;

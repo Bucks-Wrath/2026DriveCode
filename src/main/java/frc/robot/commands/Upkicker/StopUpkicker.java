@@ -1,12 +1,12 @@
-package frc.robot.commands.Shooter;
+package frc.robot.commands.Upkicker;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
-public class RunSerializer extends Command {
+public class StopUpkicker extends Command {
     
-    public RunSerializer() {
-        addRequirements(RobotContainer.serializer);
+    public StopUpkicker() {
+        addRequirements(RobotContainer.upkicker);
     }
 	// Called just before this Command runs the first time
 	public void initialize() {
@@ -15,7 +15,7 @@ public class RunSerializer extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
-        RobotContainer.serializer.setSpeed(1.0);
+        RobotContainer.upkicker.setSpeed(0.0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -25,13 +25,11 @@ public class RunSerializer extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		RobotContainer.serializer.setSpeed(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		end();
 	}
 }
 

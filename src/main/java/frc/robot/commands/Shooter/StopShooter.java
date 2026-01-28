@@ -3,10 +3,10 @@ package frc.robot.commands.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
-public class StopSerializer extends Command {
+public class StopShooter extends Command {
     
-    public StopSerializer() {
-        addRequirements(RobotContainer.serializer);
+    public StopShooter() {
+        addRequirements(RobotContainer.shooter);
     }
 	// Called just before this Command runs the first time
 	public void initialize() {
@@ -15,7 +15,7 @@ public class StopSerializer extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
-        RobotContainer.serializer.setSpeed(0.0);
+        RobotContainer.shooter.setSpeed(0.0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

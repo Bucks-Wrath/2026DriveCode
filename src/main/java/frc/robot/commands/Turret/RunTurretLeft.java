@@ -3,11 +3,13 @@ package frc.robot.commands.Turret;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
-public class RunTurretLeft extends Command {
+public class RunTurretLeft extends Command { 
+	//TODO: nothing saying "turn left or turn right", just says go at a speed of 1
     
     public RunTurretLeft() {
         addRequirements(RobotContainer.turret);
     }
+	
 	// Called just before this Command runs the first time
 	public void initialize() {
 

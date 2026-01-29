@@ -42,11 +42,12 @@ public final class DeviceIds {
     }
 
     public static final class CANdle {
-        // public static final int CANdleId = 17;
+        public static final int CANdleId = 17;
     }
 
     public static final class Limelight {
-        public static final String FrontTableName = "limelight-shooter";
-        public static final String RearTableName = "limelight-intake";
+        public static final String ShooterTableName = "limelight-shooter";
+        public static final String LeftTableName = "limelight-left";
+        public static final String RightTableName = "limelight-right";
     }
 }

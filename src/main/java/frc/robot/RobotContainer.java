@@ -28,14 +28,6 @@ import frc.robot.commands.Serializer.StopSerializer;
 import frc.robot.commands.Upkicker.RunUpkicker;
 import frc.robot.commands.Upkicker.StopUpkicker;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Hood;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Upkicker;
-import frc.robot.subsystems.Serializer;
-import frc.robot.subsystems.Agitator;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.IntakePivot;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -67,6 +59,7 @@ public class RobotContainer {
 
     //subsystems
     public static Shooter shooter = new Shooter();
+    public static ShooterLimelight shooterLimelight = new ShooterLimelight();
     public static Agitator agitator = new Agitator();
     public static Serializer serializer = new Serializer();
     public static Upkicker upkicker = new Upkicker();
@@ -147,6 +140,10 @@ public class RobotContainer {
     /* Passes Along Joystick Values for Elevator and Wrist */
     public double getOperatorLeftStickY() {
        return stickDeadband(this.OperatorController.getRawAxis(1), 0.05, 0.0);
+    }
+
+    public double getOperatorLeftStickX() {
+        return stickDeadband(this.OperatorController.getRawAxis(0), 0.05, 0.0);
     }
 
     public double getOperatorRightStickY() {

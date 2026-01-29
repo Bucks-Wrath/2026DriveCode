@@ -1,36 +1,40 @@
 package frc.robot.commands.Turret;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
+import edu.wpi.first.wpilibj2.command.Command;
 
-public class StopTurret extends Command {
-    
-    public StopTurret() {
-        addRequirements(RobotContainer.turret);
-    }
+public class SetTurretPosition extends Command {
+	private double turretPosition = 0;
+
+	public SetTurretPosition(double turretPosition) {
+		this.turretPosition = turretPosition;
+
+		addRequirements(RobotContainer.turret);
+	}
+
 	// Called just before this Command runs the first time
 	public void initialize() {
-
+		RobotContainer.turret.setTargetPosition(turretPosition);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
-        RobotContainer.turret.setSpeed(0.0);
+		RobotContainer.turret.positionControl();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	public boolean isFinished() {
-		return false;
+			return RobotContainer.turret.isInPosition(turretPosition);
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+
 	}
 }
-
-
